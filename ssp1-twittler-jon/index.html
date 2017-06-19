@@ -1,0 +1,158 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <script src="jquery.js"></script>
+    <script src="data_generator.js"></script>
+  </head>
+  <body>
+    <script>
+
+      $(document).ready(function(){
+        var $body = $('body');
+        $body.html('');
+
+        var index = streams.home.length - 1;
+        while(index >= 0){
+          var tweet = streams.home[index];
+          var $tweet = $('<div></div>');
+          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.appendTo($body);
+          index -= 1;
+        }
+
+      });
+
+    </script>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>Twittler</title>
+    <script src="jquery.js"></script>
+    <script src="data_generator.js"></script>
+    <link rel ='stylesheet' href='assets/stylesheets/main.css'>
+  </head>
+  <body>
+    <header class="container group">
+    <h1 class="logo">
+      <a href="index.html">Twittler</a>
+    </h1>
+    </header>
+    <section class="hero container">
+      <h2>See what your friends have to say!</h2>
+      <p>Check below for tweets from your favorite tweeters</p>
+      <a class="btn btn-alt" href="index.html">Click for newest tweets</a>
+
+    
+      <section id="alltweets">
+      
+        <script>
+
+        $(document).ready(function(){
+          var $body = $('#alltweets');
+          //$body.html('');
+          var today = new Date();
+          var time = today.getHours() + ":" + today.getMinutes();
+          var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+          var index = streams.home.length - 1;
+          while(index >= 0){
+            var tweet = streams.home[index];
+            var $tweet = $('<div></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + date + ' at ' + time);
+            $tweet.appendTo($body);
+
+            index -= 1;
+          }
+
+          for (var i = 0; i < streams.users.mracus.length; i++) {
+            var tweets = streams.users.mracus[i];
+            var $tweets = $('<div></div>');
+            $tweets.text(tweets.message + ' ' + date + ' at ' + time);
+            $tweets.appendTo($('#marcus'));
+          }
+          
+          $('#mracusButton').on('click', function() {
+            $('#marcus').css('visibility', 'visible');
+          })
+
+          for (var i = 0; i < streams.users.douglascalhoun.length; i++) {
+            var tweet = streams.users.douglascalhoun[i];
+            var $tweet = $('<div></div>');
+            $tweet.text(tweet.message + ' ' + date + ' at ' + time);
+            $tweet.appendTo($('#douglas'));
+          }
+            
+          $('#dougButton').on('click', function() {
+            $('#douglas').css('visibility', 'visible');
+          })
+
+          for (var i = 0; i < streams.users.shawndrost.length; i++) {
+            var tweet = streams.users.shawndrost[i];
+            var $tweet = $('<div></div>');
+            $tweet.text(tweet.message + ' ' + date + ' at ' + time);
+            $tweet.appendTo($('#shawn'));
+          }
+            
+          $('#shawnButton').on('click', function() {
+            $('#shawn').css('visibility', 'visible');
+          })
+
+          for (var i = 0; i < streams.users.sharksforcheap.length; i++) {
+            var tweet = streams.users.sharksforcheap[i];
+            var $tweet = $('<div></div>');
+            $tweet.text(tweet.message + ' ' + date + ' at ' + time);
+            $tweet.appendTo($('#sharks'));
+          }
+            
+          $('#sharkButton').on('click', function() {
+            $('#sharks').css('visibility', 'visible');
+          })
+
+        });
+
+      </script>
+
+    </section>
+    </section>
+    
+    <section class="grid">
+
+      <section class="col-1-2">
+        <button type="button" id="mracusButton">@mracus</button>
+        <div class="userTweets" id="marcus"></div> 
+      </section><!--
+
+        remove space
+
+      --><section class="col-1-2">
+          <button type="button" id="dougButton">@douglascalhoun</button>
+        <div class="userTweets" id="douglas"></div> 
+        </section><!--
+
+        remove space
+
+      --><section class="col-1-2">
+        <button type="button" id="shawnButton">@shawndrost</button>
+          <div class="userTweets" id="shawn"></div>
+        </section><!--
+
+        remove space
+
+      --><section class="col-1-2">
+          <button type="button" id="sharkButton">@sharksforcheap</button>
+          <div class="userTweets" id="sharks"></div>
+      </section>
+    </section>
+
+
+
+  <footer class="primary-footer container group">
+    <small>&copy; Twittler by Mike MacLean</small>
+  </footer>
+    </body>
+  </html>
