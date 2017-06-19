@@ -4,6 +4,5 @@ function helloWorld() {
 
 
 function sayWhat(what) {
-	console.log("say " + what);
+	console.log("say " + what + " fuckface");
 }
-
